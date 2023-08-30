@@ -1,10 +1,12 @@
 import React from 'react';
-import jumboData from '../fixtures/jumbo';
+import {jumbo} from '../fixtures/jumbo';
 import { Jumbotron } from '../components';
+
 export function JumbotronContainer() {
+
   return (
     <Jumbotron.Container>
-      {jumboData.map(item => (
+      {jumbo.map(item => (
         <Jumbotron key={item.id} direction={item.direction}>
           <Jumbotron.Pane>
             <Jumbotron.Title>{item.title}</Jumbotron.Title>

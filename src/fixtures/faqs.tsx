@@ -1,4 +1,4 @@
-[
+export const faqs = [
   {
     "id": 1,
     "header": "What is Netflix?",

@@ -7,7 +7,9 @@ import { FooterContainer } from '../containers/footer';
 export default function Home() {
   return (
     <>
-      <HeaderContainer>
+    Test
+    <JumbotronContainer />
+      {/* <HeaderContainer>
         <Feature>
           <Feature.Title>Unlimited films, TV programmes and more.</Feature.Title>
           <Feature.SubTitle>Watch anywhere. Cancel at any time.</Feature.SubTitle>
@@ -22,7 +24,7 @@ export default function Home() {
 
       <JumbotronContainer />
       <FaqsContainer />
-      <FooterContainer />
+      <FooterContainer /> */}
     </>
   );
 }

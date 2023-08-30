@@ -1,5 +1,6 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+// import { Route, Redirect } from 'react-router-dom';
+import { useRouter } from 'next/router';
 export function IsUserRedirect({ user, loggedInPath, children, ...rest }) {
   return (
     <Route

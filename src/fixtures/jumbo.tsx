@@ -1,4 +1,4 @@
-[
+export const jumbo = [
   {
     "id": 1,
     "title": "Enjoy on your TV.",

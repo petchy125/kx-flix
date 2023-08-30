@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link as ReachRouterLink } from "react-router-dom";
+// import { Link as ReachRouterLink } from "react-router-dom";
+import * as ReachRouterLink from 'next/link';
 import {
   Container,
   Group,
