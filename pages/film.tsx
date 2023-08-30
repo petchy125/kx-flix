@@ -2,8 +2,8 @@ import React, { FC } from "react";
 
 import dynamic from "next/dynamic";
 
-const HomePage = dynamic(() => import("../src/pages/home"));
+const FilmPage = dynamic(() => import("../src/pages/film"));
 
-const App: FC = () => <HomePage />;
+const Film: FC = () => <FilmPage />;
 
-export default App;
+export default Film;

@@ -2,8 +2,8 @@ import React, { FC } from "react";
 
 import dynamic from "next/dynamic";
 
-const HomePage = dynamic(() => import("../src/pages/home"));
+const SignInPage = dynamic(() => import("../src/pages/signin"));
 
-const App: FC = () => <HomePage />;
+const SignIn: FC = () => <SignInPage />;
 
-export default App;
+export default SignIn;

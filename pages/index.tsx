@@ -4,6 +4,6 @@ import dynamic from "next/dynamic";
 
 const HomePage = dynamic(() => import("../src/pages/home"));
 
-const App: FC = () => <HomePage />;
+const Home: FC = () => <HomePage />;
 
-export default App;
+export default Home;
