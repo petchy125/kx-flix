@@ -1,6 +1,7 @@
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 // import { Link as ReachRouterLink } from 'react-router-dom';
-import * as ReachRouterLink from 'next/link';
+// import ReachRouterLink from 'next/link';
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -44,7 +45,7 @@ export const TextSmall = styled.p`
   line-height: normal;
   color: #8c8c8c;
 `;
-export const Link = styled(ReachRouterLink)`
+export const Link = styled.a`
   color: #fff;
   text-decoration: none;
 

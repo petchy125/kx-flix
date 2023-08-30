@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // import { Link as ReachRouterLink } from "react-router-dom";
-import * as ReachRouterLink from 'next/link';
+import ReachRouterLink from 'next/link';
 import {
   Container,
   Group,
@@ -36,7 +36,7 @@ Header.Group = function HeaderGroup({ children, ...restProps }) {
 };
 Header.Logo = function HeaderLogo({ to, ...restProps }) {
   return (
-    <ReachRouterLink to={to}>
+    <ReachRouterLink href={to}>
       <Logo {...restProps} />
     </ReachRouterLink>
   );

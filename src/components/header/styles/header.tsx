@@ -1,6 +1,6 @@
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 // import { Link as ReachRouterLink } from 'react-router-dom';
-import * as ReachRouterLink from 'next/link';
+import ReachRouterLink from 'next/link';
 export const Background = styled.div`
   display: flex;
   flex-direction: column;
@@ -92,7 +92,7 @@ export const SearchIcon = styled.button`
     width: 16px;
   }
 `;
-export const ButtonLink = styled(ReachRouterLink)`
+export const ButtonLink = styled.a`
   display: block;
   background-color: #e50914;
   width: 84px;
