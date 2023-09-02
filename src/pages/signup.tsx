@@ -1,41 +1,35 @@
 import React, { useState, useContext } from 'react';
-// import { useHistory } from 'react-router-dom';
 import { useRouter } from 'next/router';
-import { FirebaseContext } from '../context/firebase';
+import { auth, createUserWithEmailAndPassword } from '../lib/firebase.prod';
 import { Form } from '../components';
 import { HeaderContainer } from '../containers/header';
 import { FooterContainer } from '../containers/footer';
 import * as ROUTES from '../constants/routes';
 export default function SignUp() {
   const history = useRouter();
-  const { firebase } = useContext(FirebaseContext);
   const [firstName, setFirstName] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const isInvalid = firstName === '' || password === '' || emailAddress === '';
-  const handleSignup = event => {
+  
+  const handleSignup = async (event: React.FormEvent) => { // Make handleSignup asynchronous
     event.preventDefault();
-    return firebase
-      .auth()
-      .createUserWithEmailAndPassword(emailAddress, password)
-      .then(result =>
-        result.user
-          .updateProfile({
-            displayName: firstName,
-            photoURL: Math.floor(Math.random() * 5) + 1
-          })
-          .then(() => {
-            history.push(ROUTES.BROWSE);
-          })
-      )
-      .catch(error => {
-        setFirstName('');
-        setEmailAddress('');
-        setPassword('');
-        setError(error.message);
-      });
+    try {
+      const result = await createUserWithEmailAndPassword(auth, emailAddress, password);
+      // await result.user?.updateProfile({
+      //   displayName: firstName,
+      //   photoURL: `${Math.floor(Math.random() * 5) + 1}`,
+      // });
+      history.push(ROUTES.BROWSE);
+    } catch (error) {
+      setFirstName('');
+      setEmailAddress('');
+      setPassword('');
+      // setError(error.message);
+    }
   };
+
   return (
     <>
       <HeaderContainer>
