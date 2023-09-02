@@ -9,7 +9,7 @@ describe('<Header />', () => {
     const { container, getByText, getByTestId } = render(
       <Header>
         <Header.Frame>
-          <Header.Logo src="/logo.svg" alt="Netflix" />
+          <Header.Logo src="/images/logo.svg" alt="Netflix" />
           <Header.TextLink active="true">Hello I am a link!</Header.TextLink>
         </Header.Frame>
       </Header>
@@ -24,7 +24,7 @@ describe('<Header />', () => {
     const { container, getByText, queryByTestId } = render(
       <Header bg={false}>
         <Header.Frame>
-          <Header.Logo src="/logo.svg" alt="Netflix" />
+          <Header.Logo src="/images/logo.svg" alt="Netflix" />
           <Header.ButtonLink>Sign In</Header.ButtonLink>
           <Header.TextLink active={false}>Hello I am a link!</Header.TextLink>
         </Header.Frame>
