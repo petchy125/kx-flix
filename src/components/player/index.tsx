@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useContext, createContext, ReactNode } from "react";
 import ReactDOM from "react-dom";
 import { Container, Button, Overlay, Inner, Close } from "./styles/player";

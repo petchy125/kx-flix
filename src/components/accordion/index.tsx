@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useContext, createContext, ReactNode,SetStateAction } from "react";
 import { Container, Frame, Title, Item, Inner, Header, Body } from "./styles/accordion";
 import { CommonProps } from "@/type/type";

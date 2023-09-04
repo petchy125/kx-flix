@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 // import { Link as ReachRouterLink } from "react-router-dom";
 import ReachRouterLink from "next/link";

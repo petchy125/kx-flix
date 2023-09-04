@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect, useContext } from 'react';
 import Fuse from 'fuse.js';
 import { Card, Header, Loading, Player } from '../components';

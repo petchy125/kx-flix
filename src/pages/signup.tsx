@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { auth, createUserWithEmailAndPassword } from '../lib/firebase.prod';
