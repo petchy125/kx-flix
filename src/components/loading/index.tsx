@@ -1,6 +1,7 @@
 import React from 'react';
 import { LockBody, ReleaseBody, Spinner, Picture } from './styles/loading';
-export default function Loading({ src, ...restProps }) {
+import { PictureProps } from '@/type/type';
+export default function Loading({ src, ...restProps }:PictureProps) {
   return (
     <Spinner {...restProps}>
       <LockBody />

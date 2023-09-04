@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-// import { Link as ReachRouterLink } from 'react-router-dom';
-// import ReachRouterLink from 'next/link';
 
 export const Container = styled.div`
   display: flex;

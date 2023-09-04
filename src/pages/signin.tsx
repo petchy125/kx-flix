@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-// import { useHistory } from 'react-router-dom';
 import { useRouter } from 'next/router';
 // import { FirebaseContext } from '../context/firebase';
 import { auth, signInWithEmailAndPassword } from '../lib/firebase.prod';
@@ -22,13 +21,7 @@ export default function SignIn() {
       if(result) {
         history.push(ROUTES.BROWSE);
       }
-    // return firebase
-    //   .auth()
-    //   .signInWithEmailAndPassword(emailAddress, password)
-    //   .then(() => {
-    //     history.push(ROUTES.BROWSE);
-    //   })
-    } catch (error) {
+    } catch (error: unknown) {
       
         setEmailAddress('');
         setPassword('');

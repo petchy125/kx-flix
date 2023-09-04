@@ -1,20 +1,33 @@
-import React, { useState, useContext, createContext } from "react";
+import React, { useState, useContext, createContext, ReactNode,SetStateAction } from "react";
 import { Container, Frame, Title, Item, Inner, Header, Body } from "./styles/accordion";
-const ToggleContext = createContext();
-export default function Accordion({ children, ...restProps }) {
+import { CommonProps } from "@/type/type";
+
+// Define the context type
+interface ToggleContextType {
+  toggleShow: boolean;
+  setToggleShow: React.Dispatch<SetStateAction<boolean>>;
+}
+
+const ToggleContext = createContext<ToggleContextType | undefined>(undefined);
+
+
+export default function Accordion({ children, ...restProps }: CommonProps) {
   return (
     <Container {...restProps}>
       <Inner>{children}</Inner>
     </Container>
   );
 }
-Accordion.Title = function AccordionTitle({ children, ...restProps }) {
+
+Accordion.Title = function AccordionTitle({ children, ...restProps }: CommonProps) {
   return <Title {...restProps}>{children}</Title>;
 };
-Accordion.Frame = function AccordionFrame({ children, ...restProps }) {
+
+Accordion.Frame = function AccordionFrame({ children, ...restProps }: CommonProps) {
   return <Frame {...restProps}>{children}</Frame>;
 };
-Accordion.Item = function AccordionItem({ children, ...restProps }) {
+
+Accordion.Item = function AccordionItem({ children, ...restProps }: CommonProps) {
   const [toggleShow, setToggleShow] = useState(false);
   return (
     <ToggleContext.Provider value={{ toggleShow, setToggleShow }}>
@@ -22,8 +35,9 @@ Accordion.Item = function AccordionItem({ children, ...restProps }) {
     </ToggleContext.Provider>
   );
 };
-Accordion.Header = function AccordionHeader({ children, ...restProps }) {
-  const { toggleShow, setToggleShow } = useContext(ToggleContext);
+
+Accordion.Header = function AccordionHeader({ children, ...restProps }: CommonProps) {
+  const { toggleShow, setToggleShow } = useContext(ToggleContext) as ToggleContextType;
   return (
     <Header onClick={() => setToggleShow(!toggleShow)} {...restProps}>
       {children}
@@ -35,9 +49,9 @@ Accordion.Header = function AccordionHeader({ children, ...restProps }) {
     </Header>
   );
 };
-Accordion.Body = function AccordionBody({ children, ...restProps }) {
-  const { toggleShow } = useContext(ToggleContext);
-  /* return toggleShow ? <Body {...restProps}>{children}</Body> : null; */
+
+Accordion.Body = function AccordionBody({ children, ...restProps }: CommonProps) {
+  const { toggleShow } = useContext(ToggleContext) as ToggleContextType;
   return (
     <Body className={toggleShow ? "open" : "closed"} {...restProps}>
       <span>{children}</span>

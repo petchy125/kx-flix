@@ -1,7 +1,26 @@
+import { ReactNode } from 'react';
 import styled from 'styled-components';
-// import { Link as ReachRouterLink } from 'react-router-dom';
-import ReachRouterLink from 'next/link';
-export const Background = styled.div`
+
+interface BackgroundProps {
+  src?: string;
+  dontShowOnSmallViewPort?: boolean;
+}
+
+interface LinkProps {
+  active?: string;
+  children?: ReactNode;
+}
+
+interface SearchInputProps {
+  active: boolean;
+  value?: string;
+}
+
+interface PictureProps {
+  src: string;
+}
+
+export const Background = styled.div<BackgroundProps>`
   display: flex;
   flex-direction: column;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.35)),
@@ -26,7 +45,7 @@ export const Container = styled.div`
     margin: 0 30px;
   }
 `;
-export const Link = styled.p`
+export const Link = styled.p<LinkProps>`
   color: #fff;
   text-decoration: none;
   margin-right: 30px;
@@ -45,7 +64,7 @@ export const Group = styled.div`
   display: flex;
   align-items: center;
 `;
-export const SearchInput = styled.input`
+export const SearchInput = styled.input<SearchInputProps>`
   background-color: rgba(64, 64, 64, 0.5);
   color: white;
   border: 1px solid white;
@@ -109,7 +128,7 @@ export const ButtonLink = styled.a`
     background: #f40612;
   }
 `;
-export const Picture = styled.button`
+export const Picture = styled.button<PictureProps>`
   background: url(${({ src }) => src});
   background-size: contain;
   border: 0;

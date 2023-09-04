@@ -1,5 +1,10 @@
 import styled from 'styled-components';
-export const Inner = styled.div`
+
+interface InnerProps {
+  direction: string;
+}
+
+export const Inner = styled.div<InnerProps>`
   display: flex;
   align-items: center;
   justify-content: space-between;
