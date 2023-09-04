@@ -1,4 +1,5 @@
-import type { Metadata } from 'next'
+import type { Metadata } from 'next';
+import styles from "../style/styles.module.css";
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -11,8 +12,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html className={styles.html} lang="en">
+      <body className={styles.body}>{children}</body>
     </html>
   )
 }
