@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState, useContext } from 'react';
-import { useRouter } from 'next/router';
-import { auth, createUserWithEmailAndPassword } from '../lib/firebase.prod';
-import { Form } from '../components';
-import { HeaderContainer } from '../containers/header';
-import { FooterContainer } from '../containers/footer';
-import * as ROUTES from '../constants/routes';
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { auth, createUserWithEmailAndPassword } from '@/lib/firebase.prod';
+import { Form } from '@/components';
+import { HeaderContainer } from '@/containers/header';
+import { FooterContainer } from '@/containers/footer';
+import * as ROUTES from '@/constants/routes';
 export default function SignUp() {
   const history = useRouter();
   const [firstName, setFirstName] = useState('');

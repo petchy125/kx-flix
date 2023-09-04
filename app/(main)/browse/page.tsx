@@ -1,9 +1,11 @@
-import React, { FC } from "react";
-
-import dynamic from "next/dynamic";
-
-const BrowsePage = dynamic(() => import("../../../src/pages/browse"));
-
-const Browse: FC = () => <BrowsePage />;
-
-export default Browse;
+"use client";
+import React from 'react';
+import { BrowseContainer } from '@/containers/browse';
+import { useContent } from '@/hooks';
+import { selectionFilter } from '@/utils';
+export default function Browse() {
+  const { series } = useContent('series');
+  const { films } = useContent('films');
+  const slides = selectionFilter({ series, films });
+  return <BrowseContainer slides={slides} />;
+}
