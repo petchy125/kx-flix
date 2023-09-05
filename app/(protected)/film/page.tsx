@@ -1,6 +1,5 @@
-import Hero from '@/app/components/hero';
 import { getSearchedResult, getShow } from '@/lib/fetcher';
-import Collections from '../../components/collections';
+import Collections from '@/components/collections';
 import { getRandomShow } from '@/lib/util';
 
 export default async function Page({
@@ -10,8 +9,6 @@ export default async function Page({
 }) {
   const allShows = await getShow('movie');
   const searchedResults = await getSearchedResult(searchParams?.search ?? '');
-
-  const randomShow = getRandomShow(allShows.netflix);
 
   const collections = [
     { title: 'Trending', shows: allShows.trending },
@@ -26,7 +23,7 @@ export default async function Page({
   return (
     <section>
       <div className="pt-10">
-        {searchedResults.length < 1 && <Hero type="show" show={randomShow} />}
+      {searchedResults.length < 1 && null}
         <Collections
           collections={collections}
           searchedResults={searchedResults}

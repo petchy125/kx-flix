@@ -1,6 +1,6 @@
 import { getApps, getApp,initializeApp } from "firebase/app";
 import {  } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
 import 'firebase/firestore';
 import 'firebase/auth';
 // 1) when seeding the database you'll have to uncomment this!
@@ -17,7 +17,8 @@ const firebaseConfig = {
 
 const firebase = getApps().length ? getApp() : initializeApp(firebaseConfig);
 const auth = getAuth(firebase);
+console.log(auth);
 // 2) when seeding the database you'll have to uncomment this!
 // seedDatabase(firebase);
 // 3) once you have populated the database (only run once!), re-comment this so you don't get duplicate data
-export { firebase, auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut };
+export { firebase, auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged };

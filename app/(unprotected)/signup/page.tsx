@@ -19,7 +19,7 @@ export default function SignUp() {
     event.preventDefault();
     try {
       const result = await createUserWithEmailAndPassword(auth, emailAddress, password);
-      // await result.user?.updateProfile({
+      // result.user?.updateProfile({
       //   displayName: firstName,
       //   photoURL: `${Math.floor(Math.random() * 5) + 1}`,
       // });

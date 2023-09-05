@@ -1,4 +1,3 @@
-import Hero from '@/components/hero';
 import { getSearchedResult, getShow } from '@/lib/fetcher';
 import Collections from '@/components/collections';
 import { getRandomShow } from '@/lib/util';
@@ -23,7 +22,7 @@ export default async function Page({
   return (
     <section>
       <div className="pt-10">
-        {searchedResults.length < 1 && <Hero type="show" show={randomShow} />}
+        {searchedResults.length < 1 && null}
         <Collections
           collections={collections}
           searchedResults={searchedResults}

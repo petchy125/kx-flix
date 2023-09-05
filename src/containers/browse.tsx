@@ -1,21 +1,26 @@
 "use client";
 
 import React, { useState, useEffect, useContext } from 'react';
+import { useRouter } from 'next/navigation'
+import { getSearchedResult, getShow } from '@/lib/fetcher';
 import Fuse from 'fuse.js';
 import { Card, Header, Loading, Player } from '../components';
 import * as ROUTES from '../constants/routes';
+import { auth,signOut } from '@/lib/firebase';
 // import logo from '../logo.svg';
-import { FirebaseContext } from '../context/firebase';
+// import { FirebaseContext } from '../context/firebase';
 import { SelectProfileContainer } from './profiles';
 import { FooterContainer } from './footer';
 export function BrowseContainer({ slides }) {
+
   const [category, setCategory] = useState('series');
   const [profile, setProfile] = useState({});
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [slideRows, setSlideRows] = useState([]);
-  const { username } = useContext(FirebaseContext);
-  const user = username || {};
+  // const { auth,signOut } = useContext(FirebaseContext);
+  const user = auth.currentUser || {};
+  const history = useRouter();
   useEffect(
     () => {
       setTimeout(() => {
@@ -50,24 +55,27 @@ export function BrowseContainer({ slides }) {
         <Header.Frame>
           <Header.Group>
             <Header.Logo to={ROUTES.HOME} src={'/images/logo.svg'} alt="Netflix" />
-            <Header.TextLink active={category === 'series' ? 'true' : 'false'} onClick={() => setCategory('series')}>
+            <Header.TextLink active={category === 'series' ? 'true' : 'false'} onClick={() => history.push('/series')}>
               Series
             </Header.TextLink>
-            <Header.TextLink active={category === 'films' ? 'true' : 'false'} onClick={() => setCategory('films')}>
+            <Header.TextLink active={category === 'films' ? 'true' : 'false'} onClick={() => history.push('/film')}>
               Films
             </Header.TextLink>
           </Header.Group>
           <Header.Group>
             <Header.Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
             <Header.Profile>
-              <Header.Picture src={user.photoURL} />
+              <Header.Picture src={'1'} />
               <Header.Dropdown>
                 <Header.Group>
-                  <Header.Picture src={user.photoURL} />
+                  <Header.Picture src={'1'} />
                   <Header.TextLink>{user.displayName}</Header.TextLink>
                 </Header.Group>
                 <Header.Group>
-                  <Header.TextLink onClick={() => firebase.auth().signOut()}>Sign out</Header.TextLink>
+                  <Header.TextLink onClick={() => {
+                    // signOut();
+                    history.push(ROUTES.HOME);
+                    }}>Sign out</Header.TextLink>
                 </Header.Group>
               </Header.Dropdown>
             </Header.Profile>
