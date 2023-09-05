@@ -1,5 +1,7 @@
+// 'use client';
 import type { Metadata } from 'next';
 import styles from "../style/styles.module.css";
+import { AuthContextProvider } from '@/context/firebase'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -13,7 +15,10 @@ export default function RootLayout({
 }) {
   return (
     <html className={styles.html} lang="en">
-      <body className={styles.body}>{children}</body>
+      <body className={styles.body}>
+        <AuthContextProvider>
+          {children}
+        </AuthContextProvider></body>
     </html>
   )
 }

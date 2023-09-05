@@ -2,7 +2,7 @@
 
 import React, { useState, useContext } from 'react';
 import { useRouter } from 'next/navigation'
-import { auth, signInWithEmailAndPassword } from '@/lib/firebase.prod';
+import { auth, signInWithEmailAndPassword } from '@/lib/firebase';
 import { Form } from '@/components';
 import { HeaderContainer } from '@/containers/header';
 import { FooterContainer } from '@/containers/footer';

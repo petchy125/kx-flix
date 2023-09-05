@@ -1,4 +1,5 @@
-import { initializeApp } from "firebase/app";
+import { getApps, getApp,initializeApp } from "firebase/app";
+import {  } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import 'firebase/firestore';
 import 'firebase/auth';
@@ -14,7 +15,7 @@ const firebaseConfig = {
   measurementId: "G-VTEC2HKL7L"
 };
 
-const firebase = initializeApp(firebaseConfig);
+const firebase = getApps().length ? getApp() : initializeApp(firebaseConfig);
 const auth = getAuth(firebase);
 // 2) when seeding the database you'll have to uncomment this!
 // seedDatabase(firebase);
