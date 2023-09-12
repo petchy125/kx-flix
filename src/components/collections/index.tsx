@@ -1,6 +1,6 @@
 'use client';
 
-import Image from 'next/image';
+// import Image from 'next/image';
 import _truncate from 'lodash.truncate';
 import _shuffle from 'lodash.shuffle';
 import { useState } from 'react';
@@ -33,7 +33,7 @@ export default function Collections({
     return (
       <Card.Group>
         <Card>
-          <Card.Entities className="flex-wrap justify-center gap-y-12">
+          <Card.Entities>
             {searchedResults.map((show) => {
               const src = getSafeImageUrl(show.backdrop_path);
               return (
@@ -45,6 +45,7 @@ export default function Collections({
                     height={200}
                     src={src}
                   /> */}
+                  <img src={src} width={305} height={200} />
                   <Card.Meta>
                     <Card.SubTitle>{show.title ?? show.name}</Card.SubTitle>
                     <Card.Text>
@@ -85,6 +86,8 @@ export default function Collections({
                     loader={src}
                     src={src}
                   /> */}
+                  <img src={src} width={305}
+                    height={200} />
                   <Card.Meta>
                     <Card.SubTitle>{show.title ?? show.name}</Card.SubTitle>
                     <Card.Text>

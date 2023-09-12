@@ -9,7 +9,7 @@ export default async function Page({
 }) {
   const allShows = await getShow('tv');
   const searchedResults = await getSearchedResult(searchParams?.search ?? '');
-  const randomShow = getRandomShow(allShows.netflix);
+  // const randomShow = getRandomShow(allShows.netflix);
 
   const collections = [
     { title: 'Trending', shows: allShows.trending },

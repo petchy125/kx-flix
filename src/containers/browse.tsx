@@ -11,6 +11,7 @@ import { auth,signOut } from '@/lib/firebase';
 // import { FirebaseContext } from '../context/firebase';
 import { SelectProfileContainer } from './profiles';
 import { FooterContainer } from './footer';
+import Collections from '@/components/collections';
 export function BrowseContainer({ slides }) {
 
   const [category, setCategory] = useState('series');
@@ -21,6 +22,18 @@ export function BrowseContainer({ slides }) {
   // const { auth,signOut } = useContext(FirebaseContext);
   const user = auth.currentUser || {};
   const history = useRouter();
+  // const allShows = await getShow('tv');
+  // const searchedResults = await getSearchedResult(searchParams?.search ?? '');
+  // const randomShow = getRandomShow(allShows.netflix);
+
+  // const collections = [
+  //   { title: 'Trending', shows: allShows.trending },
+  //   { title: 'Top Rated', shows: allShows.topRated },
+  //   { title: 'Comedy', shows: allShows.comedy },
+  //   { title: 'Romance', shows: allShows.romance },
+  //   { title: 'Documentary', shows: allShows.docs },
+  // ];
+
   useEffect(
     () => {
       setTimeout(() => {
@@ -49,7 +62,7 @@ export function BrowseContainer({ slides }) {
   );
   return profile.displayName ? (
     <>
-      {loading ? <Loading src={user.photoURL} /> : <Loading.ReleaseBody />}
+      {loading ? <Loading src={'1'} /> : <Loading.ReleaseBody />}
 
       <Header src="joker1" dontShowOnSmallViewPort>
         <Header.Frame>
@@ -117,6 +130,11 @@ export function BrowseContainer({ slides }) {
           </Card>
         ))}
       </Card.Group>
+       {/* {searchedResults.length < 1 && null}
+        <Collections
+          collections={collections}
+          searchedResults={searchedResults}
+        /> */}
       <FooterContainer />
     </>
   ) : (
