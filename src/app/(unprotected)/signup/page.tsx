@@ -3,17 +3,26 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { auth, createUserWithEmailAndPassword } from '@/lib/firebase';
-import { Form } from '@/components';
+import { Form } from '@/app/components';
 import { HeaderContainer } from '@/containers/header';
 import { FooterContainer } from '@/containers/footer';
 import * as ROUTES from '@/constants/routes';
-export default function SignUp() {
+import { getServerSession } from 'next-auth';
+import { redirect } from 'next/navigation';
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+
+export default async function SignUp() {
   const history = useRouter();
   const [firstName, setFirstName] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const isInvalid = firstName === '' || password === '' || emailAddress === '';
+  const session = await getServerSession(authOptions);
+
+  if (session?.user) {
+    redirect('/series');
+  }
   
   const handleSignup = async (event: React.FormEvent) => { // Make handleSignup asynchronous
     event.preventDefault();

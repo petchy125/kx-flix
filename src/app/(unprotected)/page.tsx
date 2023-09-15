@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { Feature, OptForm } from '@/components';
+import { Feature, OptForm } from '@/app/components';
 import { HeaderContainer } from '@/containers/header';
 import { JumbotronContainer } from '@/containers/jumbotron';
 import { FaqsContainer } from '@/containers/faqs';

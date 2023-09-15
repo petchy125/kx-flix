@@ -1,65 +1,24 @@
 "use client";
 
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/navigation'
-import { getSearchedResult, getShow } from '@/lib/fetcher';
-import Fuse from 'fuse.js';
-import { Card, Header, Loading, Player } from '../components';
+
+import { Card, Header, Loading, Player } from '../app/components';
 import * as ROUTES from '../constants/routes';
 import { auth,signOut } from '@/lib/firebase';
-// import logo from '../logo.svg';
-// import { FirebaseContext } from '../context/firebase';
 import { SelectProfileContainer } from './profiles';
 import { FooterContainer } from './footer';
-import Collections from '@/components/collections';
-export function BrowseContainer({ slides }) {
+import Collections from '@/app/components/collections';
+export function BrowseContainer() {
 
   const [category, setCategory] = useState('series');
   const [profile, setProfile] = useState({});
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [slideRows, setSlideRows] = useState([]);
-  // const { auth,signOut } = useContext(FirebaseContext);
   const user = auth.currentUser || {};
   const history = useRouter();
-  // const allShows = await getShow('tv');
-  // const searchedResults = await getSearchedResult(searchParams?.search ?? '');
-  // const randomShow = getRandomShow(allShows.netflix);
-
-  // const collections = [
-  //   { title: 'Trending', shows: allShows.trending },
-  //   { title: 'Top Rated', shows: allShows.topRated },
-  //   { title: 'Comedy', shows: allShows.comedy },
-  //   { title: 'Romance', shows: allShows.romance },
-  //   { title: 'Documentary', shows: allShows.docs },
-  // ];
-
-  useEffect(
-    () => {
-      setTimeout(() => {
-        setLoading(false);
-      }, 3000);
-    },
-    [profile.displayName]
-  );
-  useEffect(
-    () => {
-      setSlideRows(slides[category]);
-    },
-    [slides, category]
-  );
-  useEffect(
-    () => {
-      const fuse = new Fuse(slideRows, { keys: ['data.description', 'data.title', 'data.genre'] });
-      const results = fuse.search(searchTerm).map(({ item }) => item);
-      if (slideRows.length > 0 && searchTerm.length > 3 && results.length > 0) {
-        setSlideRows(results);
-      } else {
-        setSlideRows(slides[category]);
-      }
-    },
-    [searchTerm]
-  );
+ 
   return profile.displayName ? (
     <>
       {loading ? <Loading src={'1'} /> : <Loading.ReleaseBody />}
@@ -68,10 +27,10 @@ export function BrowseContainer({ slides }) {
         <Header.Frame>
           <Header.Group>
             <Header.Logo to={ROUTES.HOME} src={'/images/logo.svg'} alt="Netflix" />
-            <Header.TextLink active={category === 'series' ? 'true' : 'false'} onClick={() => history.push('/series')}>
+            <Header.TextLink onClick={() => history.push('/series')}>
               Series
             </Header.TextLink>
-            <Header.TextLink active={category === 'films' ? 'true' : 'false'} onClick={() => history.push('/film')}>
+            <Header.TextLink onClick={() => history.push('/film')}>
               Films
             </Header.TextLink>
           </Header.Group>

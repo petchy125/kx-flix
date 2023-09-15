@@ -3,17 +3,25 @@
 import React, { useState, useContext } from 'react';
 import { useRouter } from 'next/navigation'
 import { auth, signInWithEmailAndPassword } from '@/lib/firebase';
-import { Form } from '@/components';
+import { Form } from '@/app/components';
 import { HeaderContainer } from '@/containers/header';
 import { FooterContainer } from '@/containers/footer';
 import * as ROUTES from '@/constants/routes';
+import { getServerSession } from 'next-auth';
+import { redirect } from 'next/navigation';
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 
-export default function SignIn() {
+export default async function SignIn() {
   const history = useRouter();
   const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const isInvalid = password === '' || emailAddress === '';
+  const session = await getServerSession(authOptions);
+
+  if (session?.user) {
+    redirect('/series');
+  }
 
   const handleSignin = async (event: React.FormEvent) => { // Make handleSignup asynchronous
     event.preventDefault();

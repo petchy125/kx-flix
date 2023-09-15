@@ -1,5 +1,5 @@
 import { getSearchedResult, getShow } from '@/lib/fetcher';
-import Collections from '@/components/collections';
+import Collections from '@/app/components/collections';
 import { getRandomShow } from '@/lib/util';
 
 export default async function Page({
