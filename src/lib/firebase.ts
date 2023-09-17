@@ -1,19 +1,15 @@
-import { getApps, getApp,initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
+import { getApp, getApps, initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
 
-// 1) when seeding the database you'll have to uncomment this!
-
-const firebaseConfig = {
-  apiKey: "AIzaSyA2BVC4AsqAEJzTtYBbs81flbS9fp3t1OM",
-  authDomain: "kx-flix.firebaseapp.com",
-  projectId: "kx-flix",
-  storageBucket: "kx-flix.appspot.com",
-  messagingSenderId: "800443425283",
-  appId: "1:800443425283:web:ec07e07fe6f8f4c098a436",
-  measurementId: "G-VTEC2HKL7L"
+const config = {
+  apiKey: process.env.NEXT_PUBLIC_FIRE_BASE_API_KEY,
+  authDomain: process.env.FIRE_BASE_AUTH_DOMAIN,
+  projectId: process.env.FIRE_BASE_PROJECT_ID,
+  storageBucket: process.env.FIRE_BASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.FIRE_BASE_MESSAGING_SENDER_ID,
+  appId: process.env.FIRE_BASE_APP_ID,
 };
+const app = getApps().length ? getApp() : initializeApp(config);
+const auth = getAuth();
 
-const firebase = getApps().length ? getApp() : initializeApp(firebaseConfig);
-const auth = getAuth(firebase);
-
-export { auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged };
+export { app, auth };

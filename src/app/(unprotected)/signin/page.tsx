@@ -1,76 +1,18 @@
-"use client";
+import Hero from '@/app/components/hero';
+import SignInForm from '@/app/components/sigin-form';
+import { Metadata } from 'next';
 
-import React, { useState, useContext } from 'react';
-import { useRouter } from 'next/navigation'
-import { auth, signInWithEmailAndPassword } from '@/lib/firebase';
-import { Form } from '@/app/components';
-import { HeaderContainer } from '@/containers/header';
-import { FooterContainer } from '@/containers/footer';
-import * as ROUTES from '@/constants/routes';
-import { getServerSession } from 'next-auth';
-import { redirect } from 'next/navigation';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+export const metadata: Metadata = {
+  title: 'Nerdflix | Sign In',
+  description: 'Sign in to see thousands of series and movies',
+};
 
-export default async function SignIn() {
-  const history = useRouter();
-  const [emailAddress, setEmailAddress] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const isInvalid = password === '' || emailAddress === '';
-  const session = await getServerSession(authOptions);
-
-  if (session?.user) {
-    redirect('/series');
-  }
-
-  const handleSignin = async (event: React.FormEvent) => { // Make handleSignup asynchronous
-    event.preventDefault();
-    try {
-      const result = await signInWithEmailAndPassword(auth, emailAddress, password);
-      if(result) {
-        history.push(ROUTES.BROWSE);
-      }
-    } catch (error: unknown) {
-      
-        setEmailAddress('');
-        setPassword('');
-        setError(error.message);
-    }
-  };
+export default function Page() {
   return (
-    <>
-      <HeaderContainer>
-        <Form>
-          <Form.Title>Sign In</Form.Title>
-          {error && <Form.Error data-testid="error">{error}</Form.Error>}
-
-          <Form.Base onSubmit={handleSignin} method="POST">
-            <Form.Input
-              placeholder="Email address"
-              value={emailAddress}
-              onChange={({ target }) => setEmailAddress(target.value)}
-            />
-            <Form.Input
-              type="password"
-              value={password}
-              autoComplete="off"
-              placeholder="Password"
-              onChange={({ target }) => setPassword(target.value)}
-            />
-            <Form.Submit disabled={isInvalid} type="submit" data-testid="sign-in">
-              Sign In
-            </Form.Submit>
-          </Form.Base>
-
-          <Form.Text>
-            New to Netflix? <Form.Link href="/signup">Sign up now.</Form.Link>
-          </Form.Text>
-          <Form.TextSmall>
-            This page is protected by Google reCAPTCHA to ensure you're not a bot. Learn more.
-          </Form.TextSmall>
-        </Form>
-      </HeaderContainer>
-      <FooterContainer />
-    </>
+    <div>
+      <Hero type="static" src="/home-bg.jpg" className="h-[116vh]">
+        <SignInForm />
+      </Hero>
+    </div>
   );
 }

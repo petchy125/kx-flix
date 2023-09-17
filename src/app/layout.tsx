@@ -1,9 +1,15 @@
+import type { Metadata } from 'next';
 import { getServerSession } from 'next-auth';
 
 import SessionProvider from '@/providers/session-provider';
-import { authOptions } from './api/auth/[...nextauth]/route';
-import './style/styles.css';
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import './globals.css';
 import Script from 'next/script';
+
+export const metadata: Metadata = {
+  title: 'Nerdflix',
+  description: 'An application built by nerds',
+};
 
 export default async function RootLayout({
   children,
