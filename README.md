@@ -1,34 +1,41 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# KX Flix
 
-## Getting Started
+Link: GitHub - karlhadwen/netflix: Subscribe to my YouTube channel: https://bit.ly/CognitiveSurge - Building Netflix Using React 
+API: Getting Started 
 
-First, run the development server:
+# Features
+1. Should have at least five pages (/signin, /signup, /series, /film, /)
+2. For /signin and signup at least should be present(e.g. Sign in form, Sign up form as shown in original project) even though the actual functionality are not present
+3. Movies or series should be searchable
+4. Don’t miss out the feature from the original project.
+5. Series and Films page can only be seen when user successfully sign in otherwise redirect to corresponding sign in or login page.
+6. When user click the play button, user can play the trailer of corresponding series or film.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+# NextJs, React and Typescripts features required in this project:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# React.js requirements
+1. Use React’s Suspense whenever possible to mitigate blocking ui and streaming HTML.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Next.js requirements
+1. Use fetch function for all data fetching. 
+2. Use server component as much as possible whenever we need to fetch data. Ensure that SEO works.
+3. Can use Routing group , Parallel Route accordingly to build an application.
+4. Migrate react 16 to Next.js 13
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+# Typescript requirement
+1. migrate project to have typescript with config file
+2. all types should be checked
+3. use some of Utility types (typescript)
+4. no any type
+5. unit test functionality with Jest
+6. optimize for performance
+7. create custom decorators
+8. using the following types:
+- Generics
+- Mapped Types
+- Conditional Types
+- Indexed Access Types
+- Utility Type
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# Nice to have(Bonus)
+1. Implement sign in and sign out functionality by using third party provider( e.g. Github or Google)
