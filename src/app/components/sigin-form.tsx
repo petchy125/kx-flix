@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { signIn } from 'next-auth/react';
+import { SignInOptions, signIn } from 'next-auth/react';
 import Form from '@/app/container/form';
 
 export default function SigIn() {
@@ -9,13 +9,15 @@ export default function SigIn() {
   const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSignin = () => {
-    signIn('credentials', {
+  const handleSignin = (event: { preventDefault: () => void; }) => {
+    event.preventDefault();
+    const signInForm:SignInOptions = {
       email: emailAddress,
       password,
       redirect: true,
       callbackUrl: '/series',
-    }).catch((err) => {
+    };
+    signIn('credentials', signInForm).catch((err) => {
       setError(err.message);
     });
   };
